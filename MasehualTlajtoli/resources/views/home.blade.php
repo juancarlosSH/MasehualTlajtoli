@@ -14,8 +14,15 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    @auth
+                        BIENVENIDO {{auth()->user()->name}} {{auth()->user()->last_name}}
+                    @endauth
                 </div>
+
+                <div class="container">
+                    <a href="{{route('cursos')}}" class="btn btn-primary">Cursos disponibles</a>
+                </div>
+
             </div>
         </div>
     </div>
