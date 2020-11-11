@@ -17,4 +17,9 @@ class CourseController extends Controller
         $cursos_disponibles = App\Models\Course::all();
         return view('cursos', compact('cursos_disponibles'));
     }
+
+    public function detalle_curso($id){
+        $curso_seleccionado = App\Models\Course::findOrFail($id);
+        return view('cursos.detalle', compact('curso_seleccionado'));
+    }
 }

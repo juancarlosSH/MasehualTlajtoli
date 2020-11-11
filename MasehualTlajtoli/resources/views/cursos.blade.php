@@ -13,6 +13,7 @@
                       <tr>
                           <th scope="col">Nombre</th>
                           <th scope="col">Descripción</th>
+                          <th scope="col">Opciones</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -20,6 +21,9 @@
                       <tr>
                           <td>{{$curso->name}}</td>
                           <td>{{$curso->description}}</td>
+                          <td>
+                            <a href="{{route('cursos.detalle', $curso)}}" class="btn btn-primary">{{ __('Acceder') }}</a>
+                          </td>
                       </tr>
                       @endforeach   
                   </tbody>
