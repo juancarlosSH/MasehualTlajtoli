@@ -23,5 +23,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('cursos', [App\Http\Controllers\CourseController::class, 'consultar_cursos'])->name('cursos');
 
-Route::get('cursos/{id}', [App\Http\Controllers\CourseController::class, 'detalle_curso'])->name('cursos.detalle');
+//Route::get('cursos/{id}', [App\Http\Controllers\CourseController::class, 'detalle_curso'])->name('cursos.detalle');
+
+Route::get('cursos/{id}/actividades', [App\Http\Controllers\ActivityController::class, 'consultar_actividades_curso'])->name('actividades');
 

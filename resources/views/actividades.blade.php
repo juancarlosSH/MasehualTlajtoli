@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Cursos disponibles') }}</div>
+                <div class="card-header">{{ __('Actividades disponibles') }}</div>
 
                 <div class="card-body">
                 <table class="table">
@@ -13,17 +13,13 @@
                       <tr>
                           <th scope="col">Nombre</th>
                           <th scope="col">Descripción</th>
-                          <th scope="col">Opciones</th>
                       </tr>
                   </thead>
                   <tbody>
-                      @foreach($cursos_disponibles as $curso)
+                      @foreach($actividades_disponibles as $actividad)
                       <tr>
-                          <td>{{$curso->name}}</td>
-                          <td>{{$curso->description}}</td>
-                          <td>
-                            <a href="{{route('actividades', $curso)}}" class="btn btn-primary">{{ __('Acceder') }}</a>
-                          </td>
+                          <td>{{$actividad->name}}</td>
+                          <td>{{$actividad->description}}</td>
                       </tr>
                       @endforeach   
                   </tbody>
