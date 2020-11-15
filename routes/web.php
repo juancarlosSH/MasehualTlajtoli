@@ -14,16 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio.welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('inicio.home');
 
-Route::get('cursos', [App\Http\Controllers\CourseController::class, 'consultar_cursos'])->name('cursos');
+Route::get('cursos', [App\Http\Controllers\CourseController::class, 'consultar_cursos'])->name('cursos.cursos_disponibles');
 
 //Route::get('cursos/{id}', [App\Http\Controllers\CourseController::class, 'detalle_curso'])->name('cursos.detalle');
 
-Route::get('cursos/{id}/actividades', [App\Http\Controllers\ActivityController::class, 'consultar_actividades_curso'])->name('actividades');
+Route::get('cursos/{id}/actividades', [App\Http\Controllers\ActivityController::class, 'consultar_actividades_curso'])->name('actividades.actividades_curso');
 
