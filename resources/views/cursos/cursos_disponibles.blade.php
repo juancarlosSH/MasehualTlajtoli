@@ -22,7 +22,7 @@
                           <td>{{$curso->name}}</td>
                           <td>{{$curso->description}}</td>
                           <td>
-                            <a href="{{route('actividades', $curso)}}" class="btn btn-primary">{{ __('Acceder') }}</a>
+                            <a href="{{route('actividades.actividades_curso', $curso)}}" class="btn btn-primary">{{ __('Acceder') }}</a>
                           </td>
                       </tr>
                       @endforeach   

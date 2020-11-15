@@ -15,7 +15,7 @@ class CourseController extends Controller
 
     public function consultar_cursos(){
         $cursos_disponibles = App\Models\Course::all();
-        return view('cursos', compact('cursos_disponibles'));
+        return view('cursos.cursos_disponibles', compact('cursos_disponibles'));
     }
 
     public function detalle_curso($id){

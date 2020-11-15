@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="container">
-                    <a href="{{route('cursos')}}" class="btn btn-primary">Cursos disponibles</a>
+                    <a href="{{route('cursos.cursos_disponibles')}}" class="btn btn-primary">Cursos disponibles</a>
                 </div>
 
             </div>
