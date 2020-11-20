@@ -14,7 +14,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: docker compose start
-      run: docker-compose up -d
-    - name: docker compose stop
-      run: docker-compose down
+    - name: docker compose up
+      run: docker-compose up
