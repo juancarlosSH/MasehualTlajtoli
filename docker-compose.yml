@@ -19,6 +19,9 @@ services:
       MYSQL_DATABASE: masehualtlajtoli_schema
       MYSQL_USER: usr_masehual_ow
       MYSQL_PASSWORD: l3ngu45-1ND1G3n45
+    volumes:
+      - db:/var/lib/mysql
     ports:
       - 3306:3306
-
+volumes:
+  db:
