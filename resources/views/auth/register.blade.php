@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Registro de cuenta')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -49,13 +50,15 @@
                                         </button>
                                     </div>
                                     <div class="col" style="text-align:right;">
-                                        <button type="button" class="btn btn-secondary">
-                                            {{ __('Cancelar') }}
-                                        </button>
+                                        <a href="{{ route('inicio.welcome') }}">
+                                            <button type="button" class="btn btn-secondary">
+                                                {{ __('Cancelar') }}
+                                            </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                            
+
                     </form>
     </div>
 </div>
