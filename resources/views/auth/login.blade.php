@@ -1,10 +1,11 @@
-@extends('layouts.app2')
+@extends('layouts.app')
 
-@section('content2')
+@section('title', 'Inicio de sesión')
+@section('content')
 <div class="container">
     <div class="row justify-content-center">
             <form method="POST" action="{{ route('login') }}">
-                        <img class="mb-4" src="{{asset('/images/masehual_logo.png')}}" alt="" width="160" height="160">
+                        <img class="rounded mx-auto d-block" src="{{asset('/images/masehual_logo.png')}}" alt="" width="160" height="160">
                         <h1 class="h1 mb-3 font-weight-normal">Inicio de sesión</h1>
                         @csrf
                             <label for="email">{{ __('Correo electrónico') }}</label>
@@ -21,12 +22,14 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Recuérdame') }}
-                                    </label>
+                                <div class="row justify-content-md-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="remember">
+                                            {{ __('Recuérdame') }}
+                                        </label>
+                                    </div>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">
