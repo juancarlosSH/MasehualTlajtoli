@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('inicio.welcome');
-});
+})->name('inicio.welcome');
 
 Auth::routes();
 
@@ -35,3 +35,14 @@ Route::get('cursos/{id}/actividades', [ActivityController::class, 'consultar_act
 Route::get('/home/{name}/edit', [UserController::class, 'edit'])->name('user.edit');
 
 Route::put('/home/{user}', [UserController::class, 'update'])->name('user.update');
+
+/*
+/
+|_/home
+  |_/edit
+  |_/cursos
+  |_/showcurso
+    |_actividad
+|_/login
+|_/register
+*/
