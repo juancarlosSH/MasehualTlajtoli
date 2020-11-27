@@ -13,7 +13,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('inicio.home');
+Route::get('/home', [HomeController::class, 'consultar_cursos_usuario'])->name('inicio.home');
 
 Route::get('/home/cursos', [CourseController::class, 'consultar_cursos'])->name('cursos.cursos_disponibles');
 

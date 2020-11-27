@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Mis cursos') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,15 +15,33 @@
                         </div>
                     @endif
 
-                    @auth
-                        BIENVENIDO {{auth()->user()->name}} {{auth()->user()->last_name}}
-                    @endauth
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Curso</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($actividades_realizadas as $actividad)
+                                @foreach($actividades_generales as $actividad_general)
+                                    @foreach($cursos_generales as $curso)
+                                        @if($actividad->activity_id === $actividad_general->id && $actividad_general->course_id === $curso->id)
+                                            <tr>
+                                                <td>{{$curso->name}}</td>
+                                                <td>{{$curso->description}}</td>
+                                                <td>
+                                                    <a href="{{route('actividades.actividades_curso', $curso)}}" class="btn btn-primary">{{ __('Acceder') }}</a>
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
-
-                <div class="container">
-                    <a href="{{route('cursos.cursos_disponibles')}}" class="btn btn-primary">Cursos disponibles</a>
-                </div>
-
             </div>
         </div>
     </div>
