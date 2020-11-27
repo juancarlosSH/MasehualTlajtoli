@@ -1,7 +1,5 @@
-<p align="center">
 ![Laravel](https://github.com/juancarlosSH/MasehualTlajtoli/workflows/Laravel/badge.svg)
 ![Docker CI](https://github.com/juancarlosSH/MasehualTlajtoli/workflows/Docker%20CI/badge.svg)
-</p>
 # Masehualtlajtoli
 Masehualtlajtoli es una aplicacion web que busca hacer un poco de conciencia y mostrar al publico en general en especial lo importante que es el salvaguardar nuestras lenguas indigenas en México.
 ## Herramientas

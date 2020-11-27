@@ -19,9 +19,9 @@ Route::get('/home/cursos', [CourseController::class, 'consultar_cursos'])->name(
 
 Route::get('/home/cursos/{id}/actividades', [ActivityController::class, 'consultar_actividades_curso'])->name('actividades.actividades_curso');
 
-Route::get('/home/{name}/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::get('/home/edit', [UserController::class, 'edit'])->middleware('auth')->name('edit');
 
-Route::put('/home/{user}', [UserController::class, 'update'])->name('user.update');
+Route::put('/home/edit', [UserController::class, 'update'])->name('update');
 
 /*
 /

@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
-    public function edit($name)
+    public function edit()
     {
-        return view('edit', compact('name'));
+        return view('edit');
     }
 
     public function update()
