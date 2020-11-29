@@ -5,8 +5,6 @@ services:
       context: .
       dockerfile: .docker/Dockerfile
     image: 'laravelapp'
-    depends_on:
-      - db
     volumes:
       - ./:/var/www/html
     ports:

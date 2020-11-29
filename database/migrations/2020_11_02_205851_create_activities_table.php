@@ -16,12 +16,14 @@ class CreateActivitiesTable extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug');
             $table->text('description');
             $table->text('question');
             $table->text('answer');
-            $table->text('url_image')->nullable();
             $table->unsignedBigInteger('course_id');
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign('course_id')
+                ->references('id')->on('courses')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
