@@ -22,14 +22,3 @@ Route::get('/home/cursos/{id}/actividades', [ActivityController::class, 'consult
 Route::get('/home/edit', [UserController::class, 'edit'])->middleware('auth')->name('edit');
 
 Route::put('/home/edit', [UserController::class, 'update'])->name('update');
-
-/*
-/
-|_/home
-  |_/edit
-  |_/cursos
-  |_/showcurso
-    |_actividad
-|_/login
-|_/register
-*/

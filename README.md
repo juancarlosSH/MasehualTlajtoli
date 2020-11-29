@@ -1,7 +1,7 @@
 ![Laravel](https://github.com/juancarlosSH/MasehualTlajtoli/workflows/Laravel/badge.svg)
 ![Docker CI](https://github.com/juancarlosSH/MasehualTlajtoli/workflows/Docker%20CI/badge.svg)
 # Masehualtlajtoli
-Masehualtlajtoli es una aplicacion web que busca hacer un poco de conciencia y mostrar al publico en general en especial lo importante que es el salvaguardar nuestras lenguas indigenas en México.
+Masehualtlajtoli es una aplicacion web que busca hacer un poco de conciencia y mostrar al publico en general lo importante que es el salvaguardar nuestras lenguas indigenas en México.
 ## Herramientas
 * Docker y Docker-compose
 * Git

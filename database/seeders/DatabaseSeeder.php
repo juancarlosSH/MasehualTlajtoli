@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Activity;
+use App\Models\Course;
+use App\Models\Image;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Course::factory(5)->has(Activity::factory(10))->create();
+        Course::factory(5)->has(Activity::factory(10)->has(Image::factory(1)))->create();
     }
 }

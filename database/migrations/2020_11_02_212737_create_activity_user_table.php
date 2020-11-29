@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActivityProgress extends Migration
+class CreateActivityUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,16 @@ class CreateActivityProgress extends Migration
      */
     public function up()
     {
-        Schema::create('activity_progress', function (Blueprint $table) {
+        Schema::create('activity_user', function (Blueprint $table) {
             $table->boolean('status')->nullable();
             $table->unsignedBigInteger('activity_id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('activity_id')
+                ->references('id')->on('activities')
+                ->onDelete('cascade');
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +34,6 @@ class CreateActivityProgress extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activity_progress');
+        Schema::dropIfExists('activity_user');
     }
 }

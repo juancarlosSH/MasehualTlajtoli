@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Course extends Model
+class Image extends Model
 {
     use HasFactory;
 
-    //Relación 1 a muchos
-    public function activities()
+    public function imageable()
     {
-        return $this->hasMany('app\Models\Activity');
+        return $this->morphTo();
     }
 }

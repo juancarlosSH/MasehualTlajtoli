@@ -42,4 +42,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //Relación muchos a muchos
+    public function activities()
+    {
+        return $this->belongsToMany('app\Models\Activity');
+    }
 }
