@@ -9,6 +9,11 @@ class Activity extends Model
 {
     use HasFactory;
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     //Relación muchos a 1
     public function course()
     {

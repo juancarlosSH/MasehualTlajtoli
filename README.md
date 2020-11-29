@@ -22,17 +22,9 @@ cd MasehualTlajtoli
 ```bash
 docker-compose up -d
 ```
-* Obtenemos el ID del contenedor Laravelapp
-```bash
-docker ps
-```
-* Entramos con el comando bash en el contenedor
-```bash
-docker exec -it id bash
-```
 * Ejecutamos el siguiente script que ejecutara los comandos necesarios para poder ver la aplicación, ATENCION: antes de esto debes de tener tu archvio .env con su configuración, el archivo .env.example no es valido
 ```bash
-./provider.sh
+docker exec server bash ./provider.sh
 ```
 Por utlimo visita localhost en tu navegador
 ## Creditos

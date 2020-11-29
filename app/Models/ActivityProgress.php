@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ActivityProgress extends Model
 {
-    protected $table = 'activity_progress';
+    protected $table = 'activity_user';
 }
