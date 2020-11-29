@@ -15,32 +15,37 @@
                         </div>
                     @endif
 
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Curso</th>
-                                <th scope="col">Descripción</th>
-                                <th scope="col">Opciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($actividades_realizadas as $actividad)
-                                @foreach($actividades_generales as $actividad_general)
-                                    @foreach($cursos_generales as $curso)
-                                        @if($actividad->activity_id === $actividad_general->id && $actividad_general->course_id === $curso->id)
-                                            <tr>
-                                                <td>{{$curso->name}}</td>
-                                                <td>{{$curso->description}}</td>
-                                                <td>
-                                                    <a href="{{route('actividades.actividades_curso', $curso)}}" class="btn btn-primary">{{ __('Acceder') }}</a>
-                                                </td>
-                                            </tr>
-                                        @endif
+                    @if ($actividades_realizadas->isEmpty())
+                        <p>Actualmente no cuenta con cursos inscritos</p>
+                    @else
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Curso</th>
+                                    <th scope="col">Descripción</th>
+                                    <th scope="col">Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach($actividades_realizadas as $actividad)
+                                    @foreach($actividades_generales as $actividad_general)
+                                        @foreach($cursos_generales as $curso)
+                                            @if($actividad->activity_id === $actividad_general->id && $actividad_general->course_id === $curso->id)
+                                                <tr>
+                                                    <td>{{$curso->name}}</td>
+                                                    <td>{{$curso->description}}</td>
+                                                    <td>
+                                                        <a href="{{route('actividades.actividades_curso', $curso)}}" class="btn btn-primary">{{ __('Acceder') }}</a>
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
                                     @endforeach
                                 @endforeach
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    @endif
                 </div>
             </div>
         </div>
