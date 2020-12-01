@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App;
 use App\Models\Course;
 use App\Models\User;
+use Illuminate\Pagination\Paginator as PaginationPaginator;
 use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
@@ -27,7 +28,9 @@ class CourseController extends Controller
                 array_push($availableCourses, $course);
             }
         }
-        return view('cursos.cursos_disponibles', compact('availableCourses'));
+        $paginateCourses = new PaginationPaginator($availableCourses, 4, 1);
+        $paginateCourses->withPath('cursos');
+        return view('cursos.cursos_disponibles', compact('paginateCourses'));
     }
 
     public function detalle_curso($id){

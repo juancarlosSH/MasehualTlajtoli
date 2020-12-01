@@ -15,10 +15,10 @@
                       </tr>
                   </thead>
                   <tbody>
-                        @if (empty($availableCourses))
+                        @if (empty($paginateCourses))
                             <p>No tenemos cursos nuevos</p>
                         @else
-                            @foreach ($availableCourses as $course)
+                            @foreach ($paginateCourses as $course)
                             <tr>
                                 <td>{{$course->name}}</td>
                                 <td>{{$course->description}}</td>
@@ -29,8 +29,9 @@
                             @endforeach
                         @endif
                   </tbody>
-              </table>
-              </div>
+                </table>
+                {{ $paginateCourses->links() }}
+                </div>
             </div>
         </div>
     </div>
