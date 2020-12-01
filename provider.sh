@@ -2,9 +2,6 @@
 echo ""
 echo "Ejecutando script de inicio del proyecto"
 echo ""
-echo "Verificando lugar de trabajo: "
-pwd
-echo ""
 echo "Ejecutando instalación de composer..."
 composer install
 echo ""
@@ -14,6 +11,6 @@ echo ""
 echo "Configurando cache..."
 php artisan config:cache
 echo ""
-echo "Creando migraciones...."
+echo "Creando migraciones..."
 php artisan migrate:fresh --seed
 echo "Instalación terminada :D"

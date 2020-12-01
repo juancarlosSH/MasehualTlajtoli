@@ -5,17 +5,29 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App;
+use App\Models\Course;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function consultar_cursos(){
-        $cursos_disponibles = App\Models\Course::all();
-        return view('cursos.cursos_disponibles', compact('cursos_disponibles'));
+        $user = User::find(Auth::id());
+        $activities = $user->activities;
+        $auxiliar = [];
+        foreach ($activities as $activity) {
+            $course = $activity->course;
+            array_push($auxiliar, $course);
+        }
+        $assignedCourses = array_unique($auxiliar);
+        $auxiliar = Course::all();
+        $availableCourses = [];
+        foreach ($auxiliar as $course) {
+            if (in_array($course, $assignedCourses) == false) {
+                array_push($availableCourses, $course);
+            }
+        }
+        return view('cursos.cursos_disponibles', compact('availableCourses'));
     }
 
     public function detalle_curso($id){

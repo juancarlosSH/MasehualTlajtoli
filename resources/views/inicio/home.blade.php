@@ -7,15 +7,13 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Mis cursos') }}</div>
-
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    @if ($actividades_realizadas->isEmpty())
+                    @if (empty($assignedCourses))
                         <p>Actualmente no cuenta con cursos inscritos</p>
                     @else
                         <table class="table">
@@ -27,25 +25,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-
-                                @foreach($actividades_realizadas as $actividad)
-                                    @foreach($actividades_generales as $actividad_general)
-                                        @foreach($cursos_generales as $curso)
-                                            @if($actividad->activity_id === $actividad_general->id && $actividad_general->course_id === $curso->id)
-                                                <tr>
-                                                    <td>{{$curso->name}}</td>
-                                                    <td>{{$curso->description}}</td>
-                                                    <td>
-                                                        <a href="{{route('actividades.actividades_curso', $curso)}}" class="btn btn-primary">{{ __('Acceder') }}</a>
-                                                    </td>
-                                                </tr>
-                                            @endif
-                                        @endforeach
-                                    @endforeach
+                                @foreach ($assignedCourses as $course)
+                                <tr>
+                                    <td>{{$course->name}}</td>
+                                    <td>{{$course->description}}</td>
+                                    <td>
+                                        <a href="{{route('actividades.actividades_curso', $course)}}" class="btn btn-primary">{{ __('Acceder') }}</a>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     @endif
+                    <a href="{{ route('cursos.cursos_disponibles') }}" class="btn btn-primary">Agregar Curso</a>
                 </div>
             </div>
         </div>

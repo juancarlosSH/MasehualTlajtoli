@@ -9,9 +9,14 @@ class Course extends Model
 {
     use HasFactory;
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     //Relación 1 a muchos
     public function activities()
     {
-        return $this->hasMany('app\Models\Activity');
+        return $this->hasMany('App\Models\Activity');
     }
 }
