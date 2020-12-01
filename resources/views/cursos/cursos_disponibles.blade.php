@@ -1,12 +1,10 @@
 @extends('layouts.app')
 @section('content')
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Cursos disponibles') }}</div>
-
                 <div class="card-body">
                 <table class="table">
                   <thead>
@@ -17,15 +15,19 @@
                       </tr>
                   </thead>
                   <tbody>
-                      @foreach($cursos_disponibles as $curso)
-                      <tr>
-                          <td>{{$curso->name}}</td>
-                          <td>{{$curso->description}}</td>
-                          <td>
-                            <a href="{{route('actividades.actividades_curso', $curso)}}" class="btn btn-primary">{{ __('Acceder') }}</a>
-                          </td>
-                      </tr>
-                      @endforeach   
+                        @if (empty($availableCourses))
+                            <p>No tenemos cursos nuevos</p>
+                        @else
+                            @foreach ($availableCourses as $course)
+                            <tr>
+                                <td>{{$course->name}}</td>
+                                <td>{{$course->description}}</td>
+                                <td>
+                                  <a href="{{route('actividades.actividades_curso', $course)}}" class="btn btn-primary">Agregar</a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        @endif
                   </tbody>
               </table>
               </div>

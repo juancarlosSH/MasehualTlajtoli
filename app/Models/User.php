@@ -46,6 +46,6 @@ class User extends Authenticatable implements MustVerifyEmail
     //Relación muchos a muchos
     public function activities()
     {
-        return $this->belongsToMany('app\Models\Activity');
+        return $this->belongsToMany('App\Models\Activity');
     }
 }

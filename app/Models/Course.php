@@ -17,6 +17,6 @@ class Course extends Model
     //Relación 1 a muchos
     public function activities()
     {
-        return $this->hasMany('app\Models\Activity');
+        return $this->hasMany('App\Models\Activity');
     }
 }
