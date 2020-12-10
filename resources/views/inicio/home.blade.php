@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    @if (empty($assignedCourses))
+                    @if (empty($paginatedCourses))
                         <p>Actualmente no cuenta con cursos inscritos</p>
                     @else
                         <table class="table">
@@ -25,7 +25,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($assignedCourses as $course)
+                                @foreach ($paginatedCourses as $course)
                                 <tr>
                                     <td>{{$course->name}}</td>
                                     <td>{{$course->description}}</td>
@@ -37,6 +37,7 @@
                             </tbody>
                         </table>
                     @endif
+                    {{ $paginatedCourses->links() }}
                     <a href="{{ route('cursos.cursos_disponibles') }}" class="btn btn-primary">Agregar Curso</a>
                 </div>
             </div>

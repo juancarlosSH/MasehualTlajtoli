@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Pagination\LengthAwarePaginator;
+
 
 class HomeController extends Controller
 {
@@ -22,11 +23,19 @@ class HomeController extends Controller
         $user = User::find(Auth::id());
         $activities = $user->activities;
         $auxiliar = [];
+
         foreach ($activities as $activity) {
             $course = $activity->course;
             array_push($auxiliar, $course);
         }
-        $assignedCourses = array_unique($auxiliar);
-        return view('inicio.home', compact('assignedCourses'));
+
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $assignedCourses = collect(array_unique($auxiliar));
+        $perPage = 5;
+        $currentPageCourses = $assignedCourses->slice(($currentPage * $perPage) - $perPage, $perPage)->all();
+        $paginatedCourses= new LengthAwarePaginator($currentPageCourses , count($assignedCourses), $perPage);
+        $paginatedCourses->setPath(route('inicio.home'));
+
+        return view('inicio.home', compact('paginatedCourses'));
     }
 }
