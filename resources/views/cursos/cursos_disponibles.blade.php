@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'Cursos disponibles')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -15,10 +17,10 @@
                       </tr>
                   </thead>
                   <tbody>
-                        @if (empty($paginateCourses))
+                        @if (empty($paginatedAvailableCourses))
                             <p>No tenemos cursos nuevos</p>
                         @else
-                            @foreach ($paginateCourses as $course)
+                            @foreach ($paginatedAvailableCourses as $course)
                             <tr>
                                 <td>{{$course->name}}</td>
                                 <td>{{$course->description}}</td>
@@ -30,7 +32,7 @@
                         @endif
                   </tbody>
                 </table>
-                {{ $paginateCourses->links() }}
+                {{ $paginatedAvailableCourses->links() }}
                 </div>
             </div>
         </div>

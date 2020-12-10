@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App;
 use App\Models\Course;
 use App\Models\User;
-use Illuminate\Pagination\Paginator as PaginationPaginator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class CourseController extends Controller
 {
@@ -28,9 +26,15 @@ class CourseController extends Controller
                 array_push($availableCourses, $course);
             }
         }
-        $paginateCourses = new PaginationPaginator($availableCourses, 4, 1);
-        $paginateCourses->withPath('cursos');
-        return view('cursos.cursos_disponibles', compact('paginateCourses'));
+
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $assignedCourses = collect(array_unique($availableCourses));
+        $perPage = 5;
+        $currentPageCourses = $assignedCourses->slice(($currentPage * $perPage) - $perPage, $perPage)->all();
+        $paginatedAvailableCourses= new LengthAwarePaginator($currentPageCourses , count($assignedCourses), $perPage);
+        $paginatedAvailableCourses->setPath(route('cursos.cursos_disponibles'));
+
+        return view('cursos.cursos_disponibles', compact('paginatedAvailableCourses'));
     }
 
     public function detalle_curso($id){
