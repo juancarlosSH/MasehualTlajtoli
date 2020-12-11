@@ -37,6 +37,16 @@ class CourseController extends Controller
         return view('cursos.cursos_disponibles', compact('paginatedAvailableCourses'));
     }
 
+    public function agregar_curso(Course $course)
+    {
+        $courseActivities = $course->activities;
+        $user = Auth::user();
+        foreach ($courseActivities as $activity) {
+            $user->activities()->attach($activity->id);
+        }
+        return redirect()->route('cursos.cursos_disponibles');
+    }
+
     public function detalle_curso($id){
         $curso_seleccionado = App\Models\Course::findOrFail($id);
         return view('cursos.detalle', compact('curso_seleccionado'));

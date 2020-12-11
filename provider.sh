@@ -1,3 +1,4 @@
+#
 echo ""
 echo "Ejecutando script de inicio del proyecto"
 echo ""

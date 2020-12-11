@@ -25,7 +25,11 @@
                                 <td>{{$course->name}}</td>
                                 <td>{{$course->description}}</td>
                                 <td>
-                                  <a href="{{route('actividades.actividades_curso', $course)}}" class="btn btn-primary">Agregar</a>
+                                    {{-- <a href="{{route('cursos.add', $course)}}" class="btn btn-primary">Agregar</a> --}}
+                                    <form action="{{ route('cursos.add', $course) }}" method="POST">
+                                        @csrf
+                                        <button type="submit">Agregar</button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
