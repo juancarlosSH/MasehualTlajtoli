@@ -17,7 +17,7 @@ Route::get('/home', [HomeController::class, 'consultar_cursos_usuario'])->middle
 
 Route::get('/home/cursos', [CourseController::class, 'consultar_cursos'])->middleware('auth', 'verified')->name('cursos.cursos_disponibles');
 
-Route::get('/home/cursos/{id}/actividades', [ActivityController::class, 'consultar_actividades_curso'])->middleware('auth', 'verified')->name('actividades.actividades_curso');
+Route::get('/home/{course}/actividades', [ActivityController::class, 'consultar_actividades_curso'])->middleware('auth', 'verified')->name('actividades.actividades_curso');
 
 Route::get('/home/edit', [UserController::class, 'edit'])->middleware('auth', 'verified')->name('edit');
 
