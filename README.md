@@ -18,15 +18,17 @@ git clone https://github.com/juancarlosSH/MasehualTlajtoli.git
 ```bash
 cd MasehualTlajtoli
 ```
-* Levantamos los contenedores
+* Levantamos los contenedores, ATENCION: antes de esto debes de tener tu archvio .env con su configuración, el archivo .env.example no es valido
 ```bash
-docker-compose up -d
+./vendor/bin/sail up -d
 ```
-* Ejecutamos el siguiente script que ejecutara los comandos necesarios para poder ver la aplicación, ATENCION: antes de esto debes de tener tu archvio .env con su configuración, el archivo .env.example no es valido
+* Ejecutamos el comando para levantar la base de datos
 ```bash
-docker exec server bash ./provider.sh
+./vendor/bin/sail artisan migrate:fresh --seed
 ```
-Por utlimo visita localhost en tu navegador
+* Por utlimo visita localhost en tu navegador
+
+[localhost](http://localhost)
 ## Creditos
 Universidad Veracruzana
 
