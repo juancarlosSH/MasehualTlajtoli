@@ -18,6 +18,10 @@ git clone https://github.com/juancarlosSH/MasehualTlajtoli.git
 ```bash
 cd MasehualTlajtoli
 ```
+* Ejecutamos el comando que nos genera la carpeta vendor
+```bash
+composer install
+```
 * Levantamos los contenedores, ATENCION: antes de esto debes de tener tu archvio .env con su configuración, el archivo .env.example no es valido
 ```bash
 ./vendor/bin/sail up -d
