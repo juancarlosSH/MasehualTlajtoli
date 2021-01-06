@@ -6,7 +6,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Actividades disponibles') }}</div>
+                <div class="card-header">
+                    <h1>{{ __('Actividades disponibles') }}</h1>
+                </div>
                 <div class="card-body">
                 @if (empty($paginatedActivities))
                     <p>Actualmente no cuenta con actividades en el curso</p>
