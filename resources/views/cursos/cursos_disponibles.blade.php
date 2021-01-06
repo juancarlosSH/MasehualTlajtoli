@@ -6,7 +6,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Cursos disponibles') }}</div>
+                <div class="card-header">
+                    <h1>{{ __('Cursos disponibles') }}</h1>
+                </div>
                 <div class="card-body">
                 <table class="table">
                   <thead>
