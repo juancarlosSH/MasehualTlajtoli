@@ -45,16 +45,16 @@
                             <div class="container" style="padding:15px;">
                                 <div class="row">
                                     <div class="col" style="text-align:left;">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Registrar') }}
-                                        </button>
-                                    </div>
-                                    <div class="col" style="text-align:right;">
                                         <a href="{{ route('inicio.welcome') }}">
                                             <button type="button" class="btn btn-secondary">
                                                 {{ __('Cancelar') }}
                                             </button>
                                         </a>
+                                    </div>
+                                    <div class="col" style="text-align:right;">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Registrar') }}
+                                        </button>
                                     </div>
                                 </div>
                             </div>
