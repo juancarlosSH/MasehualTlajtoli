@@ -7,7 +7,14 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h1>{{ __('Mis cursos') }}</h1>
+                    <div class="row">
+                        <div class="col" style="text-align:left;">
+                            <h1>{{ __('Mis cursos') }}</h1>
+                        </div>
+                        <div class="col" style="text-align:right;">
+                            <a href="{{ route('cursos.cursos_disponibles') }}" class="btn btn-success">Agregar Curso</a>
+                        </div>
+                    </div>                                  
                 </div>
                 <div class="card-body">
                     @if (session('status'))
@@ -40,7 +47,6 @@
                         </table>
                     @endif
                     {{ $paginatedCourses->links() }}
-                    <a href="{{ route('cursos.cursos_disponibles') }}" class="btn btn-primary">Agregar Curso</a>
                 </div>
             </div>
         </div>
