@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Course::factory(5)->has(Activity::factory(10))->create();
-        Course::factory(5)->has(Activity::factory(10)->has(Image::factory(1)))->create();
+        Course::factory(10)->has(Activity::factory(10)->has(Image::factory(1)))->create();
     }
 }

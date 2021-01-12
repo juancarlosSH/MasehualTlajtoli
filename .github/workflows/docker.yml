@@ -13,6 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Docker Compose start
-      run: docker-compose up -d
+      run: ./vendor/bin/sail up -d
     - name: Docker Compose stop
-      run: docker-compose down
+      run: ./vendor/bin/sail down
