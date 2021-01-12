@@ -28,7 +28,7 @@
                             <td>{{$activity->name}}</td>
                             <td>{{$activity->description}}</td>
                             <td>
-                                <a href="{{route('actividades.actividad',[$courseName, $activity])}}" class="btn btn-primary">{{ __('Acceder') }}</a>
+                                <a href="{{route('actividades.actividad',[$activity->course, $activity])}}" class="btn btn-primary">{{ __('Acceder') }}</a>
                             </td>
                         </tr>
                     @endforeach

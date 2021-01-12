@@ -30,8 +30,8 @@ class ActivityController extends Controller
         return view('actividades.actividades_curso', compact('paginatedActivities', 'courseName'));
     }
 
-    public function showActivity($courseName, Activity $activity)
+    public function mostrar_actividad(Course $course, Activity $activity)
     {
-        return view('actividades.actividad');
+        return view('actividades.actividad', compact('course', 'activity'));
     }
 }
