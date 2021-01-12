@@ -30,7 +30,9 @@
                                     {{-- <a href="{{route('cursos.add', $course)}}" class="btn btn-primary">Agregar</a> --}}
                                     <form action="{{ route('cursos.add', $course) }}" method="POST">
                                         @csrf
-                                        <button type="submit">Agregar</button>
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Agregar') }}
+                                        </button>
                                     </form>
                                 </td>
                             </tr>

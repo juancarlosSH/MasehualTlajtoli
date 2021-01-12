@@ -13,6 +13,7 @@ class ActivityController extends Controller
 {
     public function consultar_actividades_curso(Course $course){
         $activities = $course->activities;
+        $courseName = $course->name;
         $auxiliar = [];
 
         foreach ($activities as $activity) {
@@ -26,11 +27,11 @@ class ActivityController extends Controller
         $currentPageActivities = $assignedActivities->slice(($currentPage * $perPage) - $perPage, $perPage)->all();
         $paginatedActivities= new LengthAwarePaginator($currentPageActivities , count($assignedActivities), $perPage);
         $paginatedActivities->setPath(route('actividades.actividades_curso', $course));
-        return view('actividades.actividades_curso', compact('paginatedActivities'));
+        return view('actividades.actividades_curso', compact('paginatedActivities', 'courseName'));
     }
 
-    public function showActivity(Course $course, Activity $activity)
+    public function showActivity($courseName, Activity $activity)
     {
-        return view('actividades.actividad', compact('activity'));
+        return view('actividades.actividad');
     }
 }
