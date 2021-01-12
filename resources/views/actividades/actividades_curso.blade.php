@@ -7,12 +7,13 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h1>{{ __('Actividades disponibles') }}</h1>
+                    <h1>Actividades {{$courseName}}</h1>
                 </div>
                 <div class="card-body">
                 @if (empty($paginatedActivities))
                     <p>Actualmente no cuenta con actividades en el curso</p>
                 @else
+
                 <table class="table">
                   <thead>
                       <tr>
@@ -27,7 +28,7 @@
                             <td>{{$activity->name}}</td>
                             <td>{{$activity->description}}</td>
                             <td>
-                                
+                                <a href="{{route('actividades.actividad',[$courseName, $activity])}}" class="btn btn-primary">{{ __('Acceder') }}</a>
                             </td>
                         </tr>
                     @endforeach
