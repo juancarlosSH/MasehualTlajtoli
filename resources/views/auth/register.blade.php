@@ -46,13 +46,13 @@
                                 <div class="row">
                                     <div class="col" style="text-align:left;">
                                         <a href="{{ route('inicio.welcome') }}">
-                                            <button type="button" class="btn btn-secondary">
+                                            <button type="button" class="btn btn-secondary" name="cancelarButton">
                                                 {{ __('Cancelar') }}
                                             </button>
                                         </a>
                                     </div>
                                     <div class="col" style="text-align:right;">
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit" class="btn btn-primary" onclick="this.form.submit(); this.disabled = true; cancelarButton.disabled = true;">
                                             {{ __('Registrar') }}
                                         </button>
                                     </div>
