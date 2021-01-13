@@ -11,7 +11,7 @@
                 </div>
                 <div class="card-body">
                 <table class="table">
-                  <thead>
+                  <thead class="thead-light">
                       <tr>
                           <th scope="col">Nombre</th>
                           <th scope="col">Descripción</th>

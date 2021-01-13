@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" onclick="this.form.submit(); this.disabled = true;">
                                     {{ __('Ingresar') }}
                                 </button>
 

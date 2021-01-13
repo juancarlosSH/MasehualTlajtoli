@@ -13,12 +13,11 @@
                 @if (empty($paginatedActivities))
                     <p>Actualmente no cuenta con actividades en el curso</p>
                 @else
-
                 <table class="table">
-                  <thead>
+                  <thead class="thead-light">
                       <tr>
                           <th scope="col">Nombre</th>
-                          <th scope="col">Descripción</th>
+                          <th scope="col">Estado</th>
                           <th scope="col">Opciones</th>
                       </tr>
                   </thead>
@@ -26,7 +25,12 @@
                     @foreach($paginatedActivities as $activity)
                         <tr>
                             <td>{{$activity->name}}</td>
-                            <td>{{$activity->description}}</td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <p style="text-align:center;">Completada</p>
+                            </td>
                             <td>
                                 <a href="{{route('actividades.actividad',[$activity->course, $activity])}}" class="btn btn-primary">{{ __('Acceder') }}</a>
                             </td>
