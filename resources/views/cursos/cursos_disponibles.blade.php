@@ -11,7 +11,7 @@
                 </div>
                 <div class="card-body">
                 <table class="table">
-                  <thead>
+                  <thead class="thead-light">
                       <tr>
                           <th scope="col">Nombre</th>
                           <th scope="col">Descripción</th>
@@ -30,7 +30,7 @@
                                     {{-- <a href="{{route('cursos.add', $course)}}" class="btn btn-primary">Agregar</a> --}}
                                     <form action="{{ route('cursos.add', $course) }}" method="POST">
                                         @csrf
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit" class="btn btn-primary" onclick="this.form.submit(); this.disabled = true;">
                                             {{ __('Agregar') }}
                                         </button>
                                     </form>

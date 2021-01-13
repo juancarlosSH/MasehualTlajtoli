@@ -26,10 +26,11 @@
                         <p>Actualmente no cuenta con cursos inscritos</p>
                     @else
                         <table class="table">
-                            <thead>
+                            <thead class="thead-light">
                                 <tr>
                                     <th scope="col">Curso</th>
                                     <th scope="col">Descripción</th>
+                                    <th scope="col">Progreso</th>
                                     <th scope="col">Opciones</th>
                                 </tr>
                             </thead>
@@ -38,6 +39,12 @@
                                 <tr>
                                     <td>{{$course->name}}</td>
                                     <td>{{$course->description}}</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <p style="text-align:center;">50%</p>
+                                    </td>
                                     <td>
                                         <a href="{{route('actividades.actividades_curso', $course)}}" class="btn btn-primary">{{ __('Acceder') }}</a>
                                     </td>

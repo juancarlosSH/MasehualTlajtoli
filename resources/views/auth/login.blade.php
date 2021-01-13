@@ -32,12 +32,12 @@
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" onclick="this.form.submit(); this.disabled = true;">
                                     {{ __('Ingresar') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link" href="{{ route('password.request') }}" name="contrasenaOlvidadaAncla">
                                         {{ __('¿Olvidaste tu contraseña?') }}
                                     </a>
                                 @endif
