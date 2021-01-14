@@ -3,8 +3,10 @@
 # Masehualtlajtoli
 Masehualtlajtoli es una aplicacion web que busca hacer un poco de conciencia y mostrar al publico en general lo importante que es el salvaguardar nuestras lenguas indigenas en México.
 ## Herramientas
-* Docker y Docker-compose
-* Git
+* [Docker y Docker-compose](https://www.docker.com/products/docker-desktop)
+* [Git](https://git-scm.com/downloads)
+* [Composer](https://getcomposer.org/)
+* [Node](https://nodejs.org/en/)
 ## Herramientas opcionales
 Solo si se desea desarrollar
 * php 7.4
@@ -21,6 +23,10 @@ cd MasehualTlajtoli
 * Ejecutamos el comando que nos genera la carpeta vendor
 ```bash
 composer install
+```
+* Ejecutamos el comando que nos genera los modulos de node
+```bash
+npm install
 ```
 * Levantamos los contenedores, ATENCION: antes de esto debes de tener tu archvio .env con su configuración, el archivo .env.example no es valido
 ```bash
