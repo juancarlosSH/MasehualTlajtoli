@@ -4,10 +4,17 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-lg-9">
             <div class="card">
                 <div class="card-header">
-                    <h1>{{ __('Cursos disponibles') }}</h1>
+                    <div class="row">
+                        <div class="col" style="text-align:left;">
+                            <h1>{{ __('Cursos disponibles') }}</h1>
+                        </div>
+                        <div class="col" style="text-align:right;">
+                            <a href="{{ route('inicio.home') }}" class="btn btn-success">Volver</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                 <table class="table">
