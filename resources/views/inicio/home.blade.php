@@ -14,7 +14,7 @@
                         <div class="col" style="text-align:right;">
                             <a href="{{ route('cursos.cursos_disponibles') }}" class="btn btn-success">Agregar Curso</a>
                         </div>
-                    </div>                                  
+                    </div>
                 </div>
                 <div class="card-body">
                     @if (session('status'))
@@ -41,12 +41,12 @@
                                     <td>{{$course->description}}</td>
                                     <td>
                                         <div class="progress">
-                                            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{$course->progress . '%'}};" aria-valuenow="{{$course->progress . '%'}}" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                        <p style="text-align:center;">50%</p>
+                                        <p style="text-align:center;">{{$course->progress . '%'}}</p>
                                     </td>
                                     <td>
-                                        <a href="{{route('actividades.actividades_curso', $course)}}" class="btn btn-primary">{{ __('Acceder') }}</a>
+                                        <a href="{{route('actividades.actividades_curso', $course->slug)}}" class="btn btn-primary">{{ __('Acceder') }}</a>
                                     </td>
                                 </tr>
                                 @endforeach

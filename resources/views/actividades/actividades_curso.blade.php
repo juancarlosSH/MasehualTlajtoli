@@ -27,12 +27,12 @@
                             <td>{{$activity->name}}</td>
                             <td>
                                 <div class="progress">
-                                    <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{$activity->status . '00%'}};" aria-valuenow="{{$activity->status . '00%'}}" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <p style="text-align:center;">Completada</p>
+                                <p style="text-align:center;">{{$activity->status . '00%'}}</p>
                             </td>
                             <td>
-                                <a href="{{route('actividades.actividad',[$activity->course, $activity])}}" class="btn btn-primary">{{ __('Acceder') }}</a>
+                                <a href="{{route('actividades.actividad',[$activity->courseSlug, $activity->slug])}}" class="btn btn-primary">{{ __('Acceder') }}</a>
                             </td>
                         </tr>
                     @endforeach
