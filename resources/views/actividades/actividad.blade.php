@@ -20,7 +20,7 @@
                             <h4>{{ $activity->question }}</h4>
                         </div>
                     </div>           
-                    <img src="{{ asset('/' . $activity->image->url) }}" width="256" height="256">
+                    <img src="{{ asset($activity->image->url) }}" width="256" height="256">
                     <form action="{{ route('login') }}" method="post" style="padding:8px;">
                         @csrf
                             <input id="response" type="text" class="form-control @error('response') is-invalid @enderror" name="response" value="{{ old('response') }}" required autocomplete="response" autofocus maxlength="15">
