@@ -26,3 +26,5 @@ Route::get('/home/edit', [UserController::class, 'edit'])->middleware('auth', 'v
 Route::put('/home/edit', [UserController::class, 'update'])->name('update');
 
 Route::get('/home/{course}/{activity}', [ActivityController::class, 'mostrar_actividad'])->middleware('auth', 'verified')->name('actividades.actividad');
+
+Route::post('/home/{course}/{activity}', [ActivityController::class, 'evaluar_actividad'])->name('actividad.evaluar');
