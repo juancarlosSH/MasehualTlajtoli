@@ -9,6 +9,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use App;
 use App\Models\Activity;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ActivityController extends Controller
 {
@@ -50,15 +51,17 @@ class ActivityController extends Controller
 
     public function evaluar_actividad(Request $request, Course $course, Activity $activity)
     {
-        if($request->response == $activity->answer){
-            $user = Auth::user();
-            DB::table('activity_user')->where([
-                ['activity_id', '=', $activity->id],
-                ['user_id', '=', $user->id],
-            ])->update(['status' => true]);
-            return back()->with('status_true', '¡Excelente!');
-        }else{
-            return back()->with('status_false', '¡Oh oh!');
+        if ($request->validate(['response'=>'required|string|alpha|max:15'])) {
+            if($request->response == $activity->answer){
+                $user = Auth::user();
+                DB::table('activity_user')->where([
+                    ['activity_id', '=', $activity->id],
+                    ['user_id', '=', $user->id],
+                ])->update(['status' => true]);
+                return back()->with('status_true', '¡Excelente!');
+            }else{
+                return back()->with('status_false', '¡Oh oh!');
+            }
         }
     }
 }
