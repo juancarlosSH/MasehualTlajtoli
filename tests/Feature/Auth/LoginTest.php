@@ -12,7 +12,7 @@ class LoginTest extends TestCase
 {
     /**
      * Prueba de visualizar ruta de inicio de sesión 
-     * @test
+     * @test 
      * @return void
      */
     public function visualizar_login_prueba()
