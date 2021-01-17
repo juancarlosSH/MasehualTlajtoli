@@ -23,9 +23,9 @@
                 <table class="table">
                   <thead class="thead-light">
                       <tr>
-                          <th scope="col">Nombre</th>
-                          <th scope="col">Estado</th>
-                          <th scope="col">Opciones</th>
+                          <th>Nombre</th>
+                          <th>Estado</th>
+                          <th>Opciones</th>
                       </tr>
                   </thead>
                   <tbody>

@@ -44,7 +44,7 @@ class CourseController extends Controller
         foreach ($courseActivities as $activity) {
             $user->activities()->attach($activity->id);
         }
-        return redirect()->route('cursos.cursos_disponibles');
+        return back()->with('status_true', '¡Excelente!');
     }
 
     public function detalle_curso($id){
