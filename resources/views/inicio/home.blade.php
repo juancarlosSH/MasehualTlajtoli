@@ -4,7 +4,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-9">
+        <div class="col-lg-10">
             <div class="card">
                 <div class="card-header">
                     <div class="row">
@@ -25,32 +25,35 @@
                     @if (empty($paginatedCourses))
                         <p>Actualmente no cuenta con cursos inscritos</p>
                     @else
-                        <table class="table">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">Curso</th>
-                                    <th scope="col">Descripción</th>
-                                    <th scope="col">Progreso</th>
-                                    <th scope="col">Opciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($paginatedCourses as $course)
-                                <tr>
-                                    <td>{{$course->name}}</td>
-                                    <td>{{$course->description}}</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{$course->progress . '%'}};" aria-valuenow="{{$course->progress . '%'}}" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <p style="text-align:center;">{{$course->progress . '%'}}</p>
-                                    </td>
-                                    <td>
-                                        <a href="{{route('actividades.actividades_curso', $course->slug)}}" class="btn btn-primary">{{ __('Acceder') }}</a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
+                        <table class="table table-lg">
+                            <table class="table align-middle">
+                                <caption>Cursos asignados</caption>
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Curso</th>
+                                        <th>Descripción</th>
+                                        <th>Progreso</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($paginatedCourses as $course)
+                                    <tr>
+                                        <td>{{$course->name}}</td>
+                                        <td>{{$course->description}}</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{$course->progress . '%'}};" aria-valuenow="{{$course->progress . '%'}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <p style="text-align:center;">{{$course->progress . '%'}}</p>
+                                        </td>
+                                        <td>
+                                            <a href="{{route('actividades.actividades_curso', $course->slug)}}" class="btn btn-primary">{{ __('Acceder') }}</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </table>
                     @endif
                     {{ $paginatedCourses->links() }}

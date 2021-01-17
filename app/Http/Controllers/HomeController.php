@@ -44,7 +44,7 @@ class HomeController extends Controller
                     $count++;
                 }
             }
-            $auxiliarCourse->progress = round(($count * 100 / 12), 0, PHP_ROUND_HALF_UP);
+            $auxiliarCourse->progress = round(($count * 100 / 12));
             array_push($auxiliar, $auxiliarCourse);
         }
         $currentPage = LengthAwarePaginator::resolveCurrentPage();

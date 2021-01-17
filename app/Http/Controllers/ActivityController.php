@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Validator;
 
 class ActivityController extends Controller
 {
-    public function consultar_actividades_curso(Course $course){
+    public function consultar_actividades_curso(Course $course)
+    {
         $activities = $course->activities;
         $user = Auth::user();
         $courseName = $course->name;
