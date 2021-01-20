@@ -41,7 +41,7 @@ class HomeController extends Controller
             $auxiliarCourse->description = $course->description;
             $count = 0;
             foreach ($course->activities as $activity) {
-                if (Activity::getStatus($activity, $user)) {
+                if (Activity::get_status($activity, $user)) {
                     $count++;
                 }
             }

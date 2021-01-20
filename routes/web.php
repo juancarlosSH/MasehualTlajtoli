@@ -16,7 +16,7 @@ Route::get('/home', [HomeController::class, 'show_user_courses'])->middleware('a
 
 Route::get('/home/cursos', [CourseController::class, 'show_courses'])->middleware('auth', 'verified')->name('cursos.cursos_disponibles');
 
-Route::post('/home/cursos/{course}', [CourseController::class, 'add_coruse'])->middleware('auth', 'verified')->name('cursos.add');
+Route::post('/home/cursos/{course}', [CourseController::class, 'add_course'])->middleware('auth', 'verified')->name('cursos.add');
 
 Route::get('/home/{course}/actividades', [ActivityController::class, 'show_course_activity'])->middleware('auth', 'verified')->name('actividades.actividades_curso');
 

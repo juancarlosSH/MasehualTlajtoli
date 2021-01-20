@@ -57,7 +57,7 @@ class ActivityController extends Controller
      * $request - Variable of type Request that contains the user's answer of the actividad view
      * $activity - Variable of type Activity that contains the activity that it is resolving
      */
-    public function evaluate_activity(Request $request, Activity $activity)
+    public function evaluate_activity(Request $request, Course $course, Activity $activity)
     {
         if ($request->validate(['response'=>'required|string|alpha|max:15'])) {
             if(strtolower($request->response) == $activity->answer){

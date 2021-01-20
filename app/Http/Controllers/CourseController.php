@@ -45,7 +45,7 @@ class CourseController extends Controller
         $courseActivities = $course->activities;
         $user = User::get_user();
         foreach ($courseActivities as $activity) {
-            $user->activities->attach($activity->id);
+            $user->activities()->attach($activity->id);
         }
         return back()->with('status_true', '¡Excelente!');
     }
