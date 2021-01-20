@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -44,12 +43,17 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Function that returns the information of the authenticated user
+     */
     public static function get_user()
     {
         return Auth::user();
     }
 
-    //Relación muchos a muchos
+    /**
+     * Function that contains the relationship Many to many between Course and Activity
+     */
     public function activities()
     {
         return $this->belongsToMany('App\Models\Activity');

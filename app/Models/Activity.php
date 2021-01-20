@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -10,11 +9,19 @@ class Activity extends Model
 {
     use HasFactory;
 
+    /**
+     * This function obtains a route identified by a key name and returns a slug
+     */
     public function getRouteKeyName()
     {
         return 'slug';
     }
 
+    /**
+     * This function obtains a status of the activity to know if the activity has been completed
+     * $activity - Variable that contains the activity that belongs to the user
+     * $user - Variable that contains the information of the authenticated user
+     */
     public static function get_status($activity, $user)
     {
         return DB::table('activity_user')->where([
@@ -23,6 +30,11 @@ class Activity extends Model
         ])->value('status');
     }
 
+    /**
+     * This function changes the status of the activity to true that means that the activity is completed
+     * $activity - Variable that contains the status activity that will be changed
+     * $user - Variable that contains the information of the authenticated user
+     */
     public static function set_status($activity, $user)
     {
         DB::table('activity_user')->where([
@@ -31,19 +43,25 @@ class Activity extends Model
         ])->update(['status' => true]);
     }
 
-    //Relación muchos a 1
+    /**
+     * Function that contains the relationship Many to one between Activity and Course
+     */
     public function course()
     {
         return $this->belongsTo('App\Models\Course');
     }
 
-    //Relación muchos a muchos
+    /**
+     * Function that contains the relationship Many to many between Activity and Course
+     */
     public function activities()
     {
         return $this->belongsToMany('App\Models\User');
     }
 
-    //Relación polimorfica 1 a 1 imagen actividad
+    /**
+     * Function that contains the relationship One to one between Activity and Image
+     */
     public function image()
     {
         return $this->morphOne('App\Models\Image', 'imageable');

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Course;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -10,6 +9,10 @@ use App\Models\User;
 
 class ActivityController extends Controller
 {
+    /**
+     * This function shows all the activities that belongs to the selected course
+     * $course - Variable of type Course that contains information of the selected course
+     */
     public function show_course_activity(Course $course)
     {
         $activities = $course->activities;
@@ -39,11 +42,21 @@ class ActivityController extends Controller
         return view('actividades.actividades_curso', compact('paginatedActivities', 'courseName'));
     }
 
+    /**
+     * This function opens the view of individual activity that the user selected
+     * $course - Variable of type Course that contains information of the selected course
+     * $activity - Variable of type Activity that contains information of the selected activity
+     */
     public function show_activity(Course $course, Activity $activity)
     {
         return view('actividades.actividad', compact('course', 'activity'));
     }
 
+    /**
+     * This function evaluates the user's answer to the Database and return a status message for success or error
+     * $request - Variable of type Request that contains the user's answer of the actividad view
+     * $activity - Variable of type Activity that contains the activity that it is resolving
+     */
     public function evaluate_activity(Request $request, Activity $activity)
     {
         if ($request->validate(['response'=>'required|string|alpha|max:15'])) {
@@ -58,6 +71,9 @@ class ActivityController extends Controller
     }
 }
 
+/**
+ * This class is created to set new values that the Activity model does not contain
+ */
 class AuxiliarActivity
 {
     public $id;

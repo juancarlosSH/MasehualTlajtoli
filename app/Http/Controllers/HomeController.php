@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Activity;
 use App\Models\User;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -11,7 +10,7 @@ class HomeController extends Controller
     const totalActivities = 12;
 
     /**
-     * Show the application dashboard.
+     * Show the application dashboard that it is the view's home
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -20,6 +19,9 @@ class HomeController extends Controller
         return view('inicio.home');
     }
 
+    /**
+     * This function shows all the courses that the authenticated user has assigned
+     */
     public function show_user_courses()
     {
         $user = User::get_user();
@@ -56,6 +58,9 @@ class HomeController extends Controller
     }
 }
 
+/**
+ * This class is created to set new values that the Course model does not contain
+ */
 class AuxiliarCourse
 {
     public $id;

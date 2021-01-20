@@ -1,15 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App;
 use App\Models\Course;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class CourseController extends Controller
 {
+    /**
+     * This function shows all the available courses that the authenticated user does not have
+     */
     public function show_courses()
     {
         $user = User::get_user();
@@ -36,6 +36,10 @@ class CourseController extends Controller
         return view('cursos.cursos_disponibles', compact('paginatedAvailableCourses'));
     }
 
+    /**
+     * This function allows to the authenticated user add a new course to answer it and the function returns a succesfully status
+     * $course - Variable of type Course that contains information of the course that the user wants to add
+     */
     public function add_course(Course $course)
     {
         $courseActivities = $course->activities;
