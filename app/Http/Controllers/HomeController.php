@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
+use App\Models\Activity;
 use App\Models\User;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    const totalActivities = 12;
+
     /**
      * Show the application dashboard.
      *
@@ -19,19 +20,17 @@ class HomeController extends Controller
         return view('inicio.home');
     }
 
-    public function consultar_cursos_usuario(){
-        $user = User::find(Auth::id());
+    public function show_user_courses()
+    {
+        $user = User::get_user();
         $activities = $user->activities;
         $auxiliar = [];
-
         foreach ($activities as $activity) {
             $course = $activity->course;
             array_push($auxiliar, $course);
         }
-
         $courses = array_unique($auxiliar);
         $auxiliar = [];
-
         foreach ($courses as $course) {
             $auxiliarCourse = new AuxiliarCourse();
             $auxiliarCourse->id = $course->id;
@@ -40,11 +39,11 @@ class HomeController extends Controller
             $auxiliarCourse->description = $course->description;
             $count = 0;
             foreach ($course->activities as $activity) {
-                if (DB::table('activity_user')->where('activity_id', $activity->id)->where('user_id', $user->id)->value('status')) {
+                if (Activity::getStatus($activity, $user)) {
                     $count++;
                 }
             }
-            $auxiliarCourse->progress = round(($count * 100 / 12));
+            $auxiliarCourse->progress = round(($count * 100 / self::totalActivities));
             array_push($auxiliar, $auxiliarCourse);
         }
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
@@ -53,12 +52,12 @@ class HomeController extends Controller
         $currentPageCourses = $assignedCourses->slice(($currentPage * $perPage) - $perPage, $perPage)->all();
         $paginatedCourses= new LengthAwarePaginator($currentPageCourses , count($assignedCourses), $perPage);
         $paginatedCourses->setPath(route('inicio.home'));
-
         return view('inicio.home', compact('paginatedCourses'));
     }
 }
 
-class AuxiliarCourse {
+class AuxiliarCourse
+{
     public $id;
     public $name = "";
     public $slug = "";

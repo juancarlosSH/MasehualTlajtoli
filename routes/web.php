@@ -3,7 +3,6 @@
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -13,18 +12,14 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [HomeController::class, 'consultar_cursos_usuario'])->middleware('auth', 'verified')->name('inicio.home');
+Route::get('/home', [HomeController::class, 'show_user_courses'])->middleware('auth', 'verified')->name('inicio.home');
 
-Route::get('/home/cursos', [CourseController::class, 'consultar_cursos'])->middleware('auth', 'verified')->name('cursos.cursos_disponibles');
+Route::get('/home/cursos', [CourseController::class, 'show_courses'])->middleware('auth', 'verified')->name('cursos.cursos_disponibles');
 
-Route::post('/home/cursos/{course}', [CourseController::class, 'agregar_curso'])->middleware('auth', 'verified')->name('cursos.add');
+Route::post('/home/cursos/{course}', [CourseController::class, 'add_coruse'])->middleware('auth', 'verified')->name('cursos.add');
 
-Route::get('/home/{course}/actividades', [ActivityController::class, 'consultar_actividades_curso'])->middleware('auth', 'verified')->name('actividades.actividades_curso');
+Route::get('/home/{course}/actividades', [ActivityController::class, 'show_course_activity'])->middleware('auth', 'verified')->name('actividades.actividades_curso');
 
-Route::get('/home/edit', [UserController::class, 'edit'])->middleware('auth', 'verified')->name('edit');
+Route::get('/home/{course}/{activity}', [ActivityController::class, 'show_activity'])->middleware('auth', 'verified')->name('actividades.actividad');
 
-Route::put('/home/edit', [UserController::class, 'update'])->name('update');
-
-Route::get('/home/{course}/{activity}', [ActivityController::class, 'mostrar_actividad'])->middleware('auth', 'verified')->name('actividades.actividad');
-
-Route::post('/home/{course}/{activity}', [ActivityController::class, 'evaluar_actividad'])->name('actividad.evaluar');
+Route::post('/home/{course}/{activity}', [ActivityController::class, 'evaluate_activity'])->name('actividad.evaluar');

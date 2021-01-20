@@ -3,20 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Course;
 use Illuminate\Pagination\LengthAwarePaginator;
-use App;
 use App\Models\Activity;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 
 class ActivityController extends Controller
 {
-    public function consultar_actividades_curso(Course $course)
+    public function show_course_activity(Course $course)
     {
         $activities = $course->activities;
-        $user = Auth::user();
+        $user = User::get_user();
         $courseName = $course->name;
         $auxiliar = [];
 
@@ -28,10 +25,7 @@ class ActivityController extends Controller
             $auxiliarActivity->description = $activity->description;
             $auxiliarActivity->question = $activity->question;
             $auxiliarActivity->answer = $activity->answer;
-            $auxiliarActivity->status = DB::table('activity_user')
-            ->where('activity_id', $activity->id)
-            ->where('user_id', $user->id)
-            ->value('status');
+            $auxiliarActivity->status = Activity::get_status($activity, $user);
             $auxiliarActivity->courseSlug = $course->slug;
             array_push($auxiliar, $auxiliarActivity);
         }
@@ -45,20 +39,17 @@ class ActivityController extends Controller
         return view('actividades.actividades_curso', compact('paginatedActivities', 'courseName'));
     }
 
-    public function mostrar_actividad(Course $course, Activity $activity)
+    public function show_activity(Course $course, Activity $activity)
     {
         return view('actividades.actividad', compact('course', 'activity'));
     }
 
-    public function evaluar_actividad(Request $request, Course $course, Activity $activity)
+    public function evaluate_activity(Request $request, Activity $activity)
     {
         if ($request->validate(['response'=>'required|string|alpha|max:15'])) {
-            if($request->response == $activity->answer){
-                $user = Auth::user();
-                DB::table('activity_user')->where([
-                    ['activity_id', '=', $activity->id],
-                    ['user_id', '=', $user->id],
-                ])->update(['status' => true]);
+            if(strtolower($request->response) == $activity->answer){
+                $user = User::get_user();
+                Activity::set_status($activity, $user);
                 return back()->with('status_true', '¡Excelente!');
             }else{
                 return back()->with('status_false', '¡Oh oh!');
@@ -67,7 +58,8 @@ class ActivityController extends Controller
     }
 }
 
-class AuxiliarActivity {
+class AuxiliarActivity
+{
     public $id;
     public $name = "";
     public $slug = "";

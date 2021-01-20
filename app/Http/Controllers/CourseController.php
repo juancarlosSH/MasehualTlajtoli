@@ -10,8 +10,9 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class CourseController extends Controller
 {
-    public function consultar_cursos(){
-        $user = User::find(Auth::id());
+    public function show_courses()
+    {
+        $user = User::get_user();
         $activities = $user->activities;
         $auxiliar = [];
         foreach ($activities as $activity) {
@@ -26,29 +27,22 @@ class CourseController extends Controller
                 array_push($availableCourses, $course);
             }
         }
-
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
         $assignedCourses = collect(array_unique($availableCourses));
         $perPage = 5;
         $currentPageCourses = $assignedCourses->slice(($currentPage * $perPage) - $perPage, $perPage)->all();
         $paginatedAvailableCourses= new LengthAwarePaginator($currentPageCourses , count($assignedCourses), $perPage);
         $paginatedAvailableCourses->setPath(route('cursos.cursos_disponibles'));
-
         return view('cursos.cursos_disponibles', compact('paginatedAvailableCourses'));
     }
 
-    public function agregar_curso(Course $course)
+    public function add_course(Course $course)
     {
         $courseActivities = $course->activities;
-        $user = Auth::user();
+        $user = User::get_user();
         foreach ($courseActivities as $activity) {
-            $user->activities()->attach($activity->id);
+            $user->activities->attach($activity->id);
         }
         return back()->with('status_true', '¡Excelente!');
-    }
-
-    public function detalle_curso($id){
-        $curso_seleccionado = App\Models\Course::findOrFail($id);
-        return view('cursos.detalle', compact('curso_seleccionado'));
     }
 }
