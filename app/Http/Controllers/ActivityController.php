@@ -59,7 +59,7 @@ class ActivityController extends Controller
      */
     public function evaluate_activity(Request $request, Course $course, Activity $activity)
     {
-        if ($request->validate(['response'=>'required|string|alpha|max:15'])) {
+        if ($request->validate(['response'=>'required|string|max:15'])) {
             if(strtolower($request->response) == $activity->answer){
                 $user = User::get_user();
                 Activity::set_status($activity, $user);

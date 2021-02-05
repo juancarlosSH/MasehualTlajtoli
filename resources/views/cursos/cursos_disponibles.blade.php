@@ -20,7 +20,7 @@
                 @if (session('status_true'))
                 <div class="alert alert-success" role="alert">
                     <h2 class="alert-heading">{{session('status_true')}}</h2>
-                    <p>Curso asignado con exito</p>
+                    <p>Curso asignado con éxito</p>
                 </div>
                 @endif
                 <table class="table">
