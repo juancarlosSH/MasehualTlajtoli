@@ -55,7 +55,7 @@ class SignUpTest extends TestCase
 
     /**
      * Prueba de registro de usuarios con información correcta y sin duplicidad de cuenta
-     * @test
+     *
      * @return void
      */
     public function registrar_usuario_informacion_correcta_prueba(){
